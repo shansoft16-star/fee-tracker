@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 300 700;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 200 800;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 800;
+}
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 1rem;
+
+    /* Light — "Pine Ledger": warm paper base, deep pine-teal ink, coral dues */
+    --background: 0.975 0.008 165;
+    --foreground: 0.22 0.03 200;
+    --card: 1.0 0.002 165;
+    --card-foreground: 0.22 0.03 200;
+    --popover: 1.0 0.002 165;
+    --popover-foreground: 0.22 0.03 200;
+
+    --primary: 0.42 0.07 190;
+    --primary-foreground: 0.98 0.006 190;
+
+    --secondary: 0.945 0.012 175;
+    --secondary-foreground: 0.3 0.03 200;
+    --muted: 0.945 0.012 175;
+    --muted-foreground: 0.52 0.02 200;
+
+    --accent: 0.62 0.15 172;
+    --accent-foreground: 0.18 0.03 172;
+
+    --destructive: 0.58 0.19 25;
+    --destructive-foreground: 0.98 0.006 25;
+
+    --success: 0.55 0.14 150;
+    --success-foreground: 0.98 0.006 150;
+    --warning: 0.72 0.15 78;
+    --warning-foreground: 0.2 0.03 78;
+
+    --border: 0.9 0.014 175;
+    --input: 0.9 0.014 175;
+    --ring: 0.42 0.07 190;
+
+    --chart-1: 0.55 0.14 150;
+    --chart-2: 0.58 0.19 25;
+    --chart-3: 0.42 0.07 190;
+    --chart-4: 0.72 0.15 78;
+    --chart-5: 0.62 0.15 172;
+
+    --sidebar: 1.0 0.002 165;
+    --sidebar-foreground: 0.22 0.03 200;
+    --sidebar-primary: 0.42 0.07 190;
+    --sidebar-primary-foreground: 0.98 0.006 190;
+    --sidebar-accent: 0.945 0.012 175;
+    --sidebar-accent-foreground: 0.3 0.03 200;
+    --sidebar-border: 0.9 0.014 175;
+    --sidebar-ring: 0.42 0.07 190;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.44 0.08 188),
+      oklch(0.38 0.06 196)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.985 0.008 170),
+      oklch(0.965 0.012 172)
+    );
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0.17 0.02 195;
+    --foreground: 0.94 0.01 175;
+    --card: 0.21 0.022 195;
+    --card-foreground: 0.94 0.01 175;
+    --popover: 0.23 0.022 195;
+    --popover-foreground: 0.94 0.01 175;
+
+    --primary: 0.72 0.09 178;
+    --primary-foreground: 0.16 0.02 195;
+
+    --secondary: 0.26 0.024 195;
+    --secondary-foreground: 0.86 0.01 175;
+    --muted: 0.26 0.024 195;
+    --muted-foreground: 0.62 0.015 190;
+
+    --accent: 0.7 0.14 172;
+    --accent-foreground: 0.16 0.02 172;
+
+    --destructive: 0.66 0.18 25;
+    --destructive-foreground: 0.16 0.02 25;
+
+    --success: 0.68 0.15 150;
+    --success-foreground: 0.16 0.02 150;
+    --warning: 0.78 0.15 78;
+    --warning-foreground: 0.18 0.03 78;
+
+    --border: 0.3 0.024 195;
+    --input: 0.3 0.024 195;
+    --ring: 0.72 0.09 178;
+
+    --chart-1: 0.68 0.15 150;
+    --chart-2: 0.66 0.18 25;
+    --chart-3: 0.72 0.09 178;
+    --chart-4: 0.78 0.15 78;
+    --chart-5: 0.7 0.14 172;
+
+    --sidebar: 0.19 0.022 195;
+    --sidebar-foreground: 0.94 0.01 175;
+    --sidebar-primary: 0.72 0.09 178;
+    --sidebar-primary-foreground: 0.16 0.02 195;
+    --sidebar-accent: 0.26 0.024 195;
+    --sidebar-accent-foreground: 0.86 0.01 175;
+    --sidebar-border: 0.3 0.024 195;
+    --sidebar-ring: 0.72 0.09 178;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.62 0.1 180),
+      oklch(0.5 0.08 192)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.2 0.022 195),
+      oklch(0.17 0.02 195)
+    );
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .font-numeric {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

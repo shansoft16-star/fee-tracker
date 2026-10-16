@@ -1,0 +1,103 @@
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type Timestamp = nat;
+type Result__1 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type Money = nat;
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type CustomerUpdate = 
+ record {
+   dueFees: Money;
+   mobile: text;
+   name: text;
+   paidFees: Money;
+   totalFees: Money;
+ };
+type CustomerInput = 
+ record {
+   dueFees: Money;
+   mobile: text;
+   name: text;
+   paidFees: Money;
+   totalFees: Money;
+ };
+type CustomerId = nat;
+type Customer = 
+ record {
+   createdAt: Timestamp;
+   dueFees: Money;
+   id: CustomerId;
+   mobile: text;
+   name: text;
+   paidFees: Money;
+   totalFees: Money;
+ };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+service : {
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result__1);
+  _internet_identity_sign_in_start: () -> (blob);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  /// Create a customer. Returns the newly created record.
+  createCustomer: (input: CustomerInput) -> (Customer);
+  /// Delete a customer. Returns true when a record was removed.
+  deleteCustomer: (id: CustomerId) -> (bool);
+  execute: (qJson: text) -> (Result) query;
+  /// Returns the backend's public API documentation as static Markdown.
+  getApiDoc: () -> (text) query;
+  getCallerUserRole: () -> (UserRole) query;
+  /// Fetch a single customer by id.
+  getCustomer: (id: CustomerId) -> (opt Customer) query;
+  isCallerAdmin: () -> (bool) query;
+  /// List all customers.
+  listCustomers: () -> (vec Customer) query;
+  schema: () -> (text) query;
+  /// Update an existing customer. Returns the updated record, or null if absent.
+  updateCustomer: (id: CustomerId, input: CustomerUpdate) -> (opt Customer);
+}

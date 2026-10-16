@@ -1,0 +1,20 @@
+{
+  "overview": "A customer fee tracker for recording each customer's name, mobile number, paid fees, due fees, and total fees, with a live summary dashboard.",
+  "features": [
+    "Add customers with name, mobile number, paid fees, due fees, and total fees",
+    "Total fees auto-calculates from paid plus due and can be overridden",
+    "Search customers by name or mobile number",
+    "Sort and filter to find customers with outstanding dues",
+    "Dashboard cards showing total customers, collected, due, and billed",
+    "Edit and delete customer records with confirmation",
+    "Works as a phone app and can be added to the Android home screen"
+  ],
+  "category": "productivity",
+  "tags": [
+    "customer-management",
+    "fees",
+    "tracking",
+    "mobile"
+  ],
+  "last_updated": "2026-10-16T08:55:00.838Z"
+}
